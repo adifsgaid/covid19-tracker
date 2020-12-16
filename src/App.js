@@ -2,10 +2,12 @@ import './App.css';
 import {MenuItem, Select, FormControl, Card, CardContent } from '@material-ui/core';
 import React, {useState,useEffect} from 'react';
 import InfoBox from './components/infoBox';
-import Map from './components/Map'
-import Table from './components/Table'
+import Map from './components/Map';
+import Table from './components/Table';
+import { sortData } from './components/util';
+import LineGraph  from './components/LineGraph' 
 
- function App() {
+function App() {
  
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
@@ -25,7 +27,8 @@ import Table from './components/Table'
           name: country.country,
           value: country.countryInfo.iso2,
         }));
-        setTableData(data); 
+        const sortedData = sortData(data)
+        setTableData(sortedData); 
         setCountries(countries);
       })
     }
@@ -74,11 +77,12 @@ import Table from './components/Table'
         <h3>Live Cases By Country</h3>
         <Table countries={tableData}/>
         <h3>Worldwide new cases</h3>
+        <LineGraph/>
       </CardContent>
-        {/* graph */}
     </Card>
   </div>
   );
 } 
 
 export default App;
+ 
