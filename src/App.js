@@ -3,8 +3,9 @@ import {MenuItem, Select, FormControl, Card, CardContent } from '@material-ui/co
 import React, {useState,useEffect} from 'react';
 import InfoBox from './components/infoBox';
 import Map from './components/Map'
+import Table from './components/Table'
 
-function App() {
+ function App() {
  
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
