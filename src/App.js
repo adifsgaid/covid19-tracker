@@ -1,10 +1,21 @@
 import './App.css';
+import {MenuItem, Select, FormControl, Card, CardContent,} from '@material-ui/core'
 
 function App() {
   return (
     <div className="app">
-      <h1>Tracking covid19</h1>
-        
+      <h1>Covid-19 Tracker</h1>
+        <FormControl className='app__dropdown'>
+          <Select
+            variant='outlined'
+            value='abc'>
+            
+            <MenuItem value='worldide'>worldide</MenuItem>
+            <MenuItem value='worldide'>worldide</MenuItem>
+            <MenuItem value='worldide'>worldide</MenuItem>
+          
+          </Select>
+        </FormControl>
         {/* header*/}
         {/* title + dropDown */}
 
