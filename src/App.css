@@ -2,8 +2,18 @@
   margin: 0;
 }
 body{
-  background: linear-gradient(to right, #ffffff 0%, #858585 100%);
+  background-color: #f5f6fa;
 }
+.app{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #f5f6fa;
+  padding: 20px;
+}
+.app__dropdown {
+  background-color: white;
+}
+
 .app__header{
   display: flex;
   align-items: center;
@@ -13,4 +23,11 @@ body{
 .app__stats{
   display: flex;
   justify-content: space-between;
+}
+.app__header > h1 {
+  color: #fc3c3c;
+  font-size: 2rem;
+}
+.app__left {
+  flex: 0.4;
 }
