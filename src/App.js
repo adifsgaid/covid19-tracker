@@ -8,13 +8,14 @@ function App() {
  
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
-  const [countryInfo, setCountryInfo] = useState({})
-  
+  const [countryInfo, setCountryInfo] = useState({});
+  const [tableData,setTableData] = useState([]);
+ 
   useEffect(()=>{
     fetch('https://disease.sh/v3/covid-19/all').then(response => response.json()).then(data =>{
       setCountryInfo(data);
     })
-  },[]) 
+  },[]);
 
   useEffect(() => {
     const getCountriesData = async() => {
@@ -23,11 +24,12 @@ function App() {
           name: country.country,
           value: country.countryInfo.iso2,
         }));
+        setTableData(data); 
         setCountries(countries);
       })
     }
     getCountriesData();
-  }, [])
+  }, []);
  
   const onCountryChange = async (e) => {
     const countryCode = e.target.value;
