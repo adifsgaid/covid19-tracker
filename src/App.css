@@ -31,7 +31,10 @@ body{
 .app__left {
   flex: 0.7;
 }
-
+.text__graph{
+  align-items: center;
+  display: flex;
+}
 .name__graph{
   margin: 10px;
 }
