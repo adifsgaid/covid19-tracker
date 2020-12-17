@@ -14,7 +14,9 @@ function App() {
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData,setTableData] = useState([]);
- 
+  const [mapCenter, setmapCenter] = useState({lat:46.227638, lng:2.213749});
+  const [mapZoom, setmapZoom] = useState(4)
+  
   useEffect(()=>{
     fetch('https://disease.sh/v3/covid-19/all').then(response => response.json()).then(data =>{
       setCountryInfo(data);
