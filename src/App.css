@@ -32,6 +32,10 @@ body{
   flex: 0.7;
 }
 
+.name__graph{
+  margin: 10px;
+}
+
 @media (max-width: 990px){
   .app{
     flex-direction: column;

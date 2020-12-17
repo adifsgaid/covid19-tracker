@@ -37,6 +37,7 @@ const options = {
             display: false,
           },
           ticks: {
+
             callback: function (value, index, values) {
               return numeral(value).format('0a');
             },
@@ -69,7 +70,6 @@ function LineGraph() {
     useEffect(()=>{
         const fetchData = async () => {
             await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=30').then(response => response.json()).then(data => {
-                //console.log(data)
                 const chartData = buildChartData(data)
                 setData(chartData)
             })
@@ -91,7 +91,7 @@ function LineGraph() {
                 ],
              }}
              options={options}
-                />
+               />
          )}
         </div>
     )
