@@ -4,7 +4,7 @@ import './Map.css'
 import 'leaflet/dist/leaflet.css';
 
 
-function Map({ countries, casesType, center, zoom }){
+function Map({center, zoom }){
     return (
         <div className='map'>
           <MapContainer center={center} zoom={zoom}>
