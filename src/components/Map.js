@@ -2,8 +2,7 @@ import React, {useEffect,useRef} from 'react';
 import './Map.css'
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoibm90YWxlbWVzYSIsImEiOiJjazhiOTZnb2gwM3NxM2ZucGp1Z21mNjZ0In0.Z4nS6wdB4WzflkDItyXSIQ";
+mapboxgl.accessToken = `${process.env.REACT_APP_API_KEY_YT}`;
 
 function Map({ center, zoom }){
     const mapboxElRef = useRef(null); // DOM element to render map
@@ -20,7 +19,7 @@ function Map({ center, zoom }){
   });
     
   return (
-        <div className='map' >
+        <div className='map'>
             <div className='mapContainer'>
                 <div className="mapBox" ref={mapboxElRef} />
             </div>

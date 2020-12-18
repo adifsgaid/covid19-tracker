@@ -8,6 +8,7 @@ import { sortData } from './components/util';
 import LineGraph  from './components/LineGraph';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+
 function App() {
  
   const [countries, setCountries] = useState([]);
@@ -56,7 +57,7 @@ function App() {
       .then((data) => {
         setCountry(countryCode);
         setCountryInfo(data);
-        console.log(data.countryInfo.lat, data.countryInfo.long)
+      
         setMapCenter([data.countryInfo.long, data.countryInfo.lat ]);
         setMapZoom(4);
       });
