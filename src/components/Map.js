@@ -20,7 +20,8 @@ function Map({ center, zoom, countries, casesType }){
                     }}
                     zoom={[zoom]}
                     center={center}
-                    >     {showDataOnMap(countries, casesType)}
+                    >     
+                  {showDataOnMap(countries, casesType)}
                   </MapToken>
                   </div>       
             </div>
