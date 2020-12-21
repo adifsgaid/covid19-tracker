@@ -1,6 +1,6 @@
 import React from "react";
 import numeral from "numeral";
-import {Popup, Layer} from 'react-mapbox-gl';
+import {Popup, Layer, Feature} from 'react-mapbox-gl';
 
 const casesTypeColors = {
   cases: {
@@ -33,15 +33,16 @@ export const prettyPrintStat = (stat) =>
 
   export const showDataOnMap = (data, casesType = "deaths") =>
   data.map((country) => (
-    <Layer
+    <Layer >
+    <Feature
       type="circle"
-      center={[country.countryInfo.lat, country.countryInfo.long]}
-      fill-opacity={0.4}
-      fill-color={casesTypeColors[casesType].hex}
+      center={[ country.countryInfo.long,country.countryInfo.lat]}
+      circle-color = {casesTypeColors[casesType].hex}
+      circle-opacity= {0.4}
       circle-radius={
         Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
       }
-    >
+    />
       <Popup>
         <div className="info-container">
           <div
