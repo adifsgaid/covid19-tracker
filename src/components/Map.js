@@ -6,7 +6,7 @@ import { showDataOnMap } from "./util";
 
 const MapToken = ReactMapboxGl ({accessToken:`${process.env.REACT_APP_API_KEY_MAPBOX}`});
 
-function Map({ center, zoom, countries, casesType }){
+function Map({ countries, casesType, center, zoom,  }){
   return (
         <div className='map'>
             <div className='mapContainer'>

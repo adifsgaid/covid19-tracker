@@ -25,20 +25,22 @@ export const sortData = (data) =>{
 export const prettyPrintStat = (stat) =>
   stat ? `+${numeral(stat).format("0.0a")}` : "+0";
 
-export const showDataOnMap = (data, casesType = 'cases') =>
+export const showDataOnMap = (data , casesType = 'cases') =>
   data.map((country) => (
-      <Layer 
-      type= 'circle'
+    
+    <Layer
+      type="circle"
       paint={{ 
-          'circle-radius': Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier,
-          'circle-color': casesTypeColors[casesType].hex,
-          'circle-opacity':0.4
+         'circle-radius':  Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier,
+         'circle-color': casesTypeColors[casesType].hex,
+         'circle-opacity': 0.4
       }}
-      
+      coordinates={[country.countryInfo.long, country.countryInfo.lat]}
+      {...console.log(Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier)}
       >  
       
-      <Feature center={[country.countryInfo.long, country.countryInfo.lat]}/> 
-
+      <Feature coordinates={[country.countryInfo.long, country.countryInfo.lat]}/>
+      
       <Popup>
         <div className='info-container'>
           <div

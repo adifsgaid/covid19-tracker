@@ -31,4 +31,6 @@
     font-size: 0.8rem !important;
     margin-top: 15px !important;
   }
-  
+  .infoBox:hover {
+    zoom: 1,5;
+  }
