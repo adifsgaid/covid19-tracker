@@ -108,8 +108,6 @@ function App() {
           />
         </div>
         <Map
-          countries={mapCountries}
-          casesType={casesType}
           center={mapCenter}
           zoom={mapZoom}/>
     

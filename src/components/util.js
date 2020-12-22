@@ -28,18 +28,20 @@ export const prettyPrintStat = (stat) =>
 export const showDataOnMap = (data , casesType = 'cases') =>
   data.map((country) => (
     
+   
+    
     <Layer
-      type="circle"
+      id='clusters'
+      type='circle'
       paint={{ 
          'circle-radius':  Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier,
          'circle-color': casesTypeColors[casesType].hex,
          'circle-opacity': 0.4
       }}
-      coordinates={[country.countryInfo.long, country.countryInfo.lat]}
       {...console.log(Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier)}
       >  
       
-      <Feature coordinates={[country.countryInfo.long, country.countryInfo.lat]}/>
+      <Feature countries={[country.countryInfo.long, country.countryInfo.lat]}/>
       
       <Popup>
         <div className='info-container'>
