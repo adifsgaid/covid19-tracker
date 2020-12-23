@@ -53,15 +53,15 @@ function App() {
 
     const url =
       countryCode === "worldwide"
-        ? "https://disease.sh/v3/covid-19/all"
+        ? 'https://disease.sh/v3/covid-19/countries/'
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
-    await fetch(url)
+     await fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setCountry(countryCode);
         setCountryInfo(data);
       
-        setMapCenter([data.countryInfo.long, data.countryInfo.lat ]);
+        setMapCenter([data.countryInfo.long, data.countryInfo.lat]);
         setMapZoom(4);
       });
   };

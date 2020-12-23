@@ -29,7 +29,7 @@ function Map({center, zoom}){
         }))
       );
 
-  const { data } = useSWR('https://disease.sh/v3/covid-19/countries/', fetcher);
+  const { data } = useSWR('https://disease.sh/v3/covid-19/countries', fetcher);
 
   // Initialize our map
   useEffect(() => {
