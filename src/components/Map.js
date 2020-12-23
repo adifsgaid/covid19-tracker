@@ -3,12 +3,11 @@ import mapboxgl from 'mapbox-gl';
 import useSWR from 'swr';
 import lookup from 'country-code-lookup';
 import './Map.css'
-// Need mapbox css for tooltips later in the tutorial
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = `${process.env.REACT_APP_API_KEY_MAPBOX}`;
 
-function Map(){
+function Map({center, zoom}){
   const mapboxElRef = useRef(null); // DOM element to render map
 
   const fetcher = (url) =>
@@ -39,8 +38,8 @@ function Map(){
       const map = new mapboxgl.Map({
         container: mapboxElRef.current,
         style: 'mapbox://styles/notalemesa/ck8dqwdum09ju1ioj65e3ql3k',
-        center: [16, 27],
-        zoom: 2
+        center: center,
+        zoom: zoom, // initial zoom
       });
 
       // Add navigation controls to the top right of the canvas
@@ -115,7 +114,7 @@ function Map(){
 
           if (id !== lastId) {
             lastId = id;
-            const { cases, deaths, country, province } = e.features[0].properties;
+            const { cases, deaths, country, province} = e.features[0].properties;
 
             // Change the pointer type on mouseenter
             map.getCanvas().style.cursor = 'pointer';
@@ -155,11 +154,10 @@ function Map(){
       });
     }
   }, [data]);
-  
   return (
         <div className='map'>
             <div className='mapContainer'>
-                <div className="mapBox" ref={mapboxElRef} />             
+                <div className="mapBox" ref={mapboxElRef} />
             </div>
         </div>
     )
