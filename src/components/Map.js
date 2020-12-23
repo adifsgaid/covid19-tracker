@@ -18,19 +18,18 @@ function Map({center, zoom}){
           type: 'Feature',
           geometry: {
             type: 'Point',
-            coordinates: [point.coordinates.longitude, point.coordinates.latitude]
+            coordinates: [point.countryInfo.long, point.countryInfo.lat]
           },
           properties: {
             id: index,
             country: point.country,
-            province: point.province,
-            cases: point.stats.confirmed,
-            deaths: point.stats.deaths
+            cases: point.cases,
+            deaths: point.deaths
           }
         }))
       );
 
-  const { data } = useSWR('https://corona.lmao.ninja/v2/jhucsse', fetcher);
+  const { data } = useSWR('https://disease.sh/v3/covid-19/countries/', fetcher);
 
   // Initialize our map
   useEffect(() => {
@@ -114,7 +113,7 @@ function Map({center, zoom}){
 
           if (id !== lastId) {
             lastId = id;
-            const { cases, deaths, country, province} = e.features[0].properties;
+            const { cases, deaths, country} = e.features[0].properties;
 
             // Change the pointer type on mouseenter
             map.getCanvas().style.cursor = 'pointer';
@@ -122,14 +121,13 @@ function Map({center, zoom}){
             const coordinates = e.features[0].geometry.coordinates.slice();
 
             const countryISO = lookup.byCountry(country)?.iso2 || lookup.byInternet(country)?.iso2;
-            const provinceHTML = province !== 'null' ? `<p>Province: <b>${province}</b></p>` : '';
             const mortalityRate = ((deaths / cases) * 100).toFixed(2);
             const countryFlagHTML = Boolean(countryISO)
               ? `<img src="https://www.countryflags.io/${countryISO}/flat/64.png"></img>`
               : '';
 
             const HTML = `<p>Country: <b>${country}</b></p>
-              ${provinceHTML}
+              
               <p>Cases: <b>${cases}</b></p>
               <p>Deaths: <b>${deaths}</b></p>
               <p>Mortality Rate: <b>${mortalityRate}%</b></p>
