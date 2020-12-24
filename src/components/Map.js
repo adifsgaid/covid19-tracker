@@ -5,7 +5,7 @@ import lookup from 'country-code-lookup';
 import './Map.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-mapboxgl.accessToken = `${process.env.REACT_APP_API_KEY_MAPBOX}`;
+mapboxgl.accessToken = "pk.eyJ1Ijoibm90YWxlbWVzYSIsImEiOiJjazhiOTZnb2gwM3NxM2ZucGp1Z21mNjZ0In0.Z4nS6wdB4WzflkDItyXSIQ";
 
 function Map({center, zoom}){
   const mapboxElRef = useRef(null); // DOM element to render map
