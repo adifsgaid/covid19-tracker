@@ -85,7 +85,7 @@ function App() {
         <div className='app__stats'>
         <InfoBox
             onClick={(e) => setCasesType("cases")}
-            title="Coronavirus Cases"
+            title="Today Coronavirus Cases"
             isRed
             active={casesType === "cases"}
             cases={prettyPrintStat(countryInfo.todayCases)}
@@ -93,14 +93,14 @@ function App() {
           />
           <InfoBox
             onClick={(e) => setCasesType("recovered")}
-            title="Recovered"
+            title="Today Recovered "
             active={casesType === "recovered"}
             cases={prettyPrintStat(countryInfo.todayRecovered)}
             total={numeral(countryInfo.recovered).format("0.0a")}
           />
           <InfoBox
             onClick={(e) => setCasesType("deaths")}
-            title="Deaths"
+            title="Today Deaths"
             isRed
             active={casesType === "deaths"}
             cases={prettyPrintStat(countryInfo.todayDeaths)}
