@@ -151,7 +151,7 @@ function Map({center, zoom}){
         });
       });
     }
-  }, [data]);
+  });
   return (
         <div className='map'>
             <div className='mapContainer'>
