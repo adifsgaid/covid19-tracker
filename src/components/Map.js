@@ -39,7 +39,6 @@ function Map({center, zoom}){
         style: 'mapbox://styles/notalemesa/ck8dqwdum09ju1ioj65e3ql3k',
         center: center,
         zoom: zoom, // initial zoom
-        mapboxApiAccessToken: "pk.eyJ1IjoiYWRpZnNnYWlkIiwiYSI6ImNrajJ1eHJ3ZTNlbzcyeHNjbDY2Zmh2Z3QifQ.cQCAHidfuKgWPuJ_BTRCFw",
       });
 
       // Add navigation controls to the top right of the canvas

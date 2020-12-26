@@ -11,7 +11,7 @@
     "country-code-lookup": "^0.0.18",
     "dotenv": "^8.2.0",
     "firebase-tools": "^9.1.0",
-    "mapbox-gl": "^2.0.0",
+    "mapbox-gl": "^1.13.0",
     "mapbox-gl-leaflet": "^0.0.14",
     "node-modules": "^1.0.1",
     "node-sass": "^5.0.0",

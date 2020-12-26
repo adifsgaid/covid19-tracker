@@ -43,4 +43,8 @@ body{
   .app{
     flex-direction: column;
   }
+  .app__left{
+    margin-bottom: 40px;
+  }
 }
+
