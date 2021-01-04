@@ -9,9 +9,15 @@ import { sortData, prettyPrintStat } from './components/util';
 import LineGraph  from './components/LineGraph';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "./components/GlobalStyles";
+import { lightTheme, darkTheme } from "./components/Themes"
+import  {useDarkMode} from "./components/useDarkMode"
+import Toggle from "./components/Toggler"
 
 function App() {
- 
+  const [theme, themeToggler] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
@@ -67,20 +73,23 @@ function App() {
   };
 
   return (
+    <ThemeProvider theme={themeMode}>
+      <>
+      <GlobalStyles/>
     <div className="app">
      <div className='app__left'>
+     <Toggle theme={theme} toggleTheme={themeToggler} />
       <div className="app__header">
         <h1>Covid-19 Tracker</h1>
         <FormControl className='app__dropdown'>
             <Select variant='outlined' onChange={onCountryChange} value={country}>
             <MenuItem value="worldwide">Worldwide</MenuItem>
-              {
-                countries.map((country)=>
-                (<MenuItem value={country.value}>{country.name}</MenuItem>))
-              }
+              { countries.map((country) => (
+                <MenuItem value={country.value}>{country.name}</MenuItem>
+              ))}
             </Select>
           </FormControl>
-        </div> 
+        </div>
 
         <div className='app__stats'>
         <InfoBox
@@ -110,7 +119,7 @@ function App() {
         <Map
           center={mapCenter}
           zoom={mapZoom}/>
-    
+
     </div>
     <Card className='app__right'>
      <CardContent>
@@ -123,8 +132,9 @@ function App() {
       </CardContent>
     </Card>
   </div>
+  </>
+</ThemeProvider>
   );
-} 
+}
 
 export default App;
- 
